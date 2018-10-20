@@ -1,0 +1,19 @@
+{
+  "name": "expense-app",
+  "version": "0.1.0",
+  "description": "An expense management app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prvnbist/expense-app.git"
+  },
+  "author": "Praveen Bisht",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/prvnbist/expense-app/issues"
+  },
+  "homepage": "https://github.com/prvnbist/expense-app#readme"
+}
