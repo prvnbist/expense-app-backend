@@ -17,7 +17,8 @@
     "graphql": "^14.0.2",
     "graphql-tools": "^4.0.2",
     "mongoose": "^5.3.4",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "validator": "^10.8.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
