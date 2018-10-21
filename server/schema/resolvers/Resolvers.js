@@ -5,12 +5,13 @@ export const resolvers = {
         users: (parent, args) => User.find({})
     },
     Mutation: {
-        addUser: (_, args) => {
+        addUser: (_, {name,email,password,income,username}) => {
 			let user = new User({
-				name: args.name,
-                email: args.email,
-                password: args.password,
-                income: args.income
+				name,
+                email,
+                password,
+                income,
+                username 
 			});
 			return user.save();
 		}
