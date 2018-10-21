@@ -4,7 +4,9 @@ export const typeDefs = `
 		name: String
 		email: String
 		income: String
+		username: String
 		password: String
-		createdAt: String
+		# createdAt: String
+		# updatedAt: String
 	}
 `;
