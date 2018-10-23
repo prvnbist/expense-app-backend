@@ -14,8 +14,10 @@
     "bcrypt": "^3.0.2",
     "cors": "^2.8.4",
     "express": "^4.16.4",
+    "express-jwt": "^5.3.1",
     "graphql": "^14.0.2",
     "graphql-tools": "^4.0.2",
+    "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.3.4",
     "nodemon": "^1.18.4",
     "validator": "^10.8.0"
