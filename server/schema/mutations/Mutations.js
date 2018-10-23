@@ -1,5 +1,6 @@
 export const typeDefs = `
 	type Mutation {		
-		addUser(name:String, email:String, password:String, income:String, username: String): User
+		signup(name:String!, email:String!, password:String!, username: String!): String
+		login(username: String!,password: String!): String
 	}
 `;
