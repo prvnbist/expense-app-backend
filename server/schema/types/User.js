@@ -4,7 +4,6 @@ export const typeDefs = `
 		name: String!
 		email: String!
 		username: String!
-		password: String!
 		# createdAt: String
 		# updatedAt: String
 	}
