@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const jsonwebtoken = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 import User from '../../models/user';
 
@@ -10,7 +10,8 @@ export const resolvers = {
                 throw new Error('You are not authenticated!')
             }
             return await User.findById(user.id)
-        }
+        },
+        users: async _ => await User.find({})
     },
     Mutation: {
         signup: async(_, {name, username, email, password}) => {
@@ -21,10 +22,10 @@ export const resolvers = {
                 password: await bcrypt.hash(password, 10)
             })
 
-            // return json web token
-            return jsonwebtoken.sign({
-                id: user.id,
-                email: user.email
+            return jwt.sign({
+                payload: {
+                    tenant: user.id
+                }
             }, 'secret', {expiresIn: '1y'})
         },
 
@@ -38,9 +39,10 @@ export const resolvers = {
                 throw new Error('Incorrect password')
             }
 
-            return jsonwebtoken.sign({
-                _id: user.id,
-                email: user.email
+            return jwt.sign({
+                payload: {
+                    tenant: user.id
+                }
             }, 'secret', {expiresIn: '1y'});
         }
     }
