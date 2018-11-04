@@ -1,0 +1,36 @@
+{
+  "name": "expense-app-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./build/server.js",
+    "dev": "set NODE_ENV=development && nodemon --exec babel-node server.js",
+    "clean": "rm -rf build && mkdir build",
+    "build-server": "babel --ignore node_modules -d ./build ./ -s",
+    "build": "npm run clean && npm run build-server",
+    "heroku-postbuild": "npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-engine": "^1.1.2",
+    "apollo-server-express": "^2.1.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.4",
+    "graphql": "^14.0.2",
+    "graphql-tools": "^4.0.2",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.3.7",
+    "nodemon": "^1.18.5",
+    "validator": "^10.8.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}
