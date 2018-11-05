@@ -28,9 +28,6 @@ mongoose
     .then(() => console.log("Connected to MongoDB!"))
     .catch(err => console.log(err));
 
-// const TOKEN = localStorage.getItem('access_token');
-// console.log(TOKEN);
-
 //Create Apollo Server
 const server = new ApolloServer({
     schema,
