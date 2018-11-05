@@ -1,5 +1,5 @@
 export const typeDefs = `
-	type Mutation {		
+	type Mutation {
 		signup(
 			name:String!, 
 			email:String!, 

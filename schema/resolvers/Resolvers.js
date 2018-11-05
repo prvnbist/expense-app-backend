@@ -13,7 +13,7 @@ export const resolvers = {
             return User.findById(userId)
         },
         users: async _ => await User.find({}),
-        expenses: async _ => await Expense.find({})
+        expenses: async _ => await Expense.find({}),
     },
     Expense: {
         user: parent => User.findById(parent.userId)
