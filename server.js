@@ -12,13 +12,8 @@ import {verifyUser} from './auth/Auth';
 // Create Express App
 const app = express();
 
-if (process.env.NODE_ENV !== "production") {
-    // Allow Cross-Origin Requests
-    app.use(cors({
-        origin:'http://localhost:3000',
-        credentials: true
-    }));
-}
+// Allow Cross-Origin Requests
+app.use(cors());
 
 // Config/Connect to DB
 const db = require("./config/keys").mongoURI;
