@@ -26,11 +26,7 @@ mongoose
 //Create Apollo Server
 const server = new ApolloServer({
     schema,
-    context: ({req, res}) => ({userId: verifyUser(req), res}),
-    debug: true,
-    tracing: true,
-    introspection: true,
-    playground: true
+    context: ({req, res}) => ({userId: verifyUser(req), res})
 });
 
 server.applyMiddleware({app});
