@@ -14,11 +14,11 @@ export const typeDefs = `
 		): String
 
 		updateUser(
-			id: String!
 			name: String,
 			email: String,
 			username: String,
-			password: String
+			password: String,
+			balance: String
 		) : User
 
 		deleteUser(id: String!) : User

@@ -4,6 +4,7 @@ export const typeDefs = `
 		name: String!
 		email: String!
 		username: String!
+		balance: String
 		expenses: [Expense]
 		gender: String!
 		createdAt: String

@@ -32,6 +32,9 @@ const userSchema = new Schema({
         unique: true,
         validate: value => validator.isEmail(value)
     },
+    balance: {
+        type: String
+    },
     password: {
         type: String,
         required: [true, "Password is required."]

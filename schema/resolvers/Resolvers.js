@@ -24,7 +24,7 @@ export const resolvers = {
     Mutation: {
         signup: async(_, {password,...fields}) => {
             const user = await User.create({...fields,password: await bcrypt.hash(password, 10)});
-            return jwt.sign({payload: {tenant: user.id}}, 'secret', {expiresIn: '1hr'});
+            return jwt.sign({payload: {tenant: user.id}}, 'secret', {expiresIn: '1w'});
         },
 
         login: async(_, {username, password}) => {
@@ -37,7 +37,7 @@ export const resolvers = {
             if (!valid) throw new Error('Incorrect password');
 
             // Return Token
-            return jwt.sign({payload: {tenant: user.id}}, 'secret', {expiresIn: '1hr'});
+            return jwt.sign({payload: {tenant: user.id}}, 'secret', {expiresIn: '1w'});
         },
 
         deleteUser: async(_, {id}, {userId}) => {
@@ -46,17 +46,16 @@ export const resolvers = {
             return await User.findOneAndDelete({"_id":id})
         },
 
-        updateUser: async(_, {id,...fields}, {userId}) => {
-            // Check If User Is Authorized            
-            if(id !== userId) throw new Error('You are not authenticated!');
+        updateUser: async(_, {...fields}, {userId}) => {
             const updatedData = {
                 ...fields.name && {name: fields.name},
                 ...fields.email && {email: fields.email},
                 ...fields.username && {username: fields.username},
                 ...fields.password && {password: fields.password},
+                ...fields.balance && {balance: fields.balance},
                 updatedAt: Date.now()
             }
-            return await User.findOneAndUpdate({"_id":id}, {$set: updatedData}, {new: true});
+            return await User.findOneAndUpdate({"_id":userId}, {$set: updatedData}, {new: true});
         },
 
         addExpense: (_, {...fields}, {userId}) => {
