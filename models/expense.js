@@ -6,7 +6,8 @@ const expenseSchema = new Schema({
     userId: String,
     category: String,
     amount: String,
-    description: String
+    description: String,
+    type: String
 }, {
     timestamps: true
 });

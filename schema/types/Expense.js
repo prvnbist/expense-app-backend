@@ -6,6 +6,7 @@ export const typeDefs = `
         amount: String!
         description: String
 		user: User!
+		type: String!
 		createdAt: String
 		updatedAt: String
 	}

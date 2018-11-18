@@ -27,6 +27,7 @@ export const typeDefs = `
 			spentOn: String!,
 			category: String,
 			amount: String!,
+			type: String!,
 			description: String
 		) : Expense
 
