@@ -59,7 +59,7 @@ export const resolvers = {
         },
 
         addExpense: (_, {...fields}, {userId}) => {
-            let expense = new Expense({fields, userId});
+            let expense = new Expense({...fields, userId});
 			return expense.save();
         },
 
