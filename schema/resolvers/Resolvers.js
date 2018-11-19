@@ -63,10 +63,8 @@ export const resolvers = {
 			return expense.save();
         },
 
-        deleteExpense: async(_, {id},{userId}) => {            
-            // Check If User Is Authorized
-            if(fields.userId !== userId) throw new Error('You are not authenticated!');
-            return await Expense.findOneAndDelete({"_id":id})
+        deleteExpense: async(_, {id},{userId}) => {
+            return await Expense.findOneAndDelete({"_id":id,userId})
         },
 
         updateExpense: async(_, {id,...fields},{userId}) => {            
