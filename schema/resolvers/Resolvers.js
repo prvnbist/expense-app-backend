@@ -1,9 +1,12 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import Joi from 'joi';
 
 // Import MongoDB Schema Models
 import User from '../../models/user';
 import Expense from '../../models/expense';
+
+import {default as signUp} from '../../schemaValidation/userValidation';
 
 // Resolvers
 export const resolvers = {
@@ -22,9 +25,11 @@ export const resolvers = {
         expenses: parent => Expense.find({userId:parent.id})
     },
     Mutation: {
-        signup: async(_, {password,...fields}) => {
+        signup: async (_, args) => {
+            const {password,...fields} = args;
+            await Joi.validate(args,signUp,{abortEarly:false});
             const user = await User.create({...fields,password: await bcrypt.hash(password, 10)});
-            return jwt.sign({payload: {tenant: user.id}}, 'secret', {expiresIn: '1w'});
+            return await jwt.sign({payload: {tenant: user.id}}, 'secret', {expiresIn: '1w'});
         },
 
         login: async(_, {username, password}) => {
