@@ -10,8 +10,6 @@ const getToken = (authorizationHeader) => {
     }
 }
 
-const getUser = async _id => await User.findOne({ _id });
-
 const verifyUser = req => {
     try {
         if(req.headers['authorization']) {
