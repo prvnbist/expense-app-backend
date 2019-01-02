@@ -3,7 +3,7 @@ import Joi from 'joi';
 export default Joi.object().keys({
     email:Joi.string().email().required().label('Email'),
     username:Joi.string().regex(/^[a-zA-Z0-9-_]+$/).min(4).max(30).required().label('Username'),
-    password:Joi.string().regex(/^(?=S*[a-z])(?=S*[A-Z])(?=\S*\d)(?=S*[^\W\s])\S{8,30}$/i).label('Password').options({
+    password:Joi.string().regex(/(?=^.{8,20}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)[0-9a-zA-Z!@#$%^&*()]*$/).label('Password').options({
         language: {
             string: {
                 regex: {
