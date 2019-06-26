@@ -15,6 +15,15 @@ export const resolvers = {
             if (!userId) throw new Error('You are not authenticated!');
             return User.findById(userId)
         },
+        usersExpenses: async (_, args, {userId}) => {
+            const expenses = await Expense.find({
+                userId, 
+                category: { "$regex": args.category ? args.category : "", "$options": "i" },
+                type: { "$regex": args.type ? args.type : "", "$options": "i" },
+                spentOn: { "$regex": args.search ? args.search : "", "$options": "i" }
+            });
+            return expenses.reverse();
+        },
         users: async _ => await User.find({}),
         expenses: async _ => await Expense.find({}),
     },
@@ -22,11 +31,8 @@ export const resolvers = {
         user: parent => User.findById(parent.userId)
     },
     User: {
-        expenses: async (parent, args) => await Expense.find({
-            userId:parent.id, 
-            category: { "$regex": args.category ? args.category : "", "$options": "i" },
-            type: { "$regex": args.type ? args.type : "", "$options": "i" },
-            spentOn: { "$regex": args.search ? args.search : "", "$options": "i" },
+        expenses: async (parent) => await Expense.find({
+            userId:parent.id
         })
     },
     Mutation: {
