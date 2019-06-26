@@ -2,6 +2,6 @@ export const typeDefs = `
 	type Query {
 		me: User
 		users: [User]
-		expenses: [Expense]
+		expenses(category: String, search: String): [Expense]
 	}
 `;

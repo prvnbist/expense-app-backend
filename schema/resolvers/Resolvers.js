@@ -22,7 +22,12 @@ export const resolvers = {
         user: parent => User.findById(parent.userId)
     },
     User: {
-        expenses: parent => Expense.find({userId:parent.id})
+        expenses: async (parent, args) => await Expense.find({
+            userId:parent.id, 
+            category: { "$regex": args.category ? args.category : "", "$options": "i" },
+            type: { "$regex": args.type ? args.type : "", "$options": "i" },
+            spentOn: { "$regex": args.search ? args.search : "", "$options": "i" },
+        })
     },
     Mutation: {
         signup: async (_, args) => {

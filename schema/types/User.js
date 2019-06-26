@@ -5,7 +5,7 @@ export const typeDefs = `
 		email: String!
 		username: String!
 		balance: String
-		expenses: [Expense]
+		expenses(category: String, search: String, type: String): [Expense]
 		gender: String!
 		createdAt: String
 		updatedAt: String
