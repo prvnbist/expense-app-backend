@@ -67,7 +67,7 @@ export const resolvers = {
                 ...fields.name && {name: fields.name},
                 ...fields.email && {email: fields.email},
                 ...fields.username && {username: fields.username},
-                ...fields.password && {password: fields.password},
+                ...fields.password && {password: await bcrypt.hash(fields.password, 10)},
                 ...fields.balance && {balance: fields.balance},
                 updatedAt: Date.now()
             }
